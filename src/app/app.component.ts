@@ -30,7 +30,7 @@ export class AppComponent {
   }
 
   logout() {
-    this.afAuth.auth.logout();
+    this.afAuth.auth.signOut();
   }
 
   Send(desc: string) {
