@@ -11,4 +11,17 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent {
   title = 'My First Angular App';
+  user: Observable<firebase.User>;
+  items: FirebaseListObservable<any[]>;
+  msgVal: string = '';
+
+  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase) {
+    this.items = af.list('/messages', {
+        query: {
+            limitToLast: 50
+        }
+    });
+
+    this.user = this.afAuth.authState;
+  }
 }
